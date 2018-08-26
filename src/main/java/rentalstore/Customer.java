@@ -1,39 +1,34 @@
 package rentalstore;
 
-import java.util.Enumeration;
 import java.util.Vector;
 
-public class Customer {
+class Customer {
     private String name;
-    private Vector rentals = new Vector();
+    private Vector<Rental> rentals = new Vector<Rental>();
 
-    public Customer(String name) {
+    Customer(String name) {
         this.name = name;
     }
 
-    public void addRental(Rental arg){
+    void addRental(Rental arg){
         rentals.addElement(arg);
     }
 
-    public String getName() {
+    String getName() {
         return name;
     }
 
-    public String statement(){
+    String statement(){
         TxtStatement txtStatement = new TxtStatement();
         return txtStatement.getStatementContent(this);
     }
 
-    public String HtmlStatement(){
+    String HtmlStatement(){
         HtmlStatement htmlStatement = new HtmlStatement();
         return htmlStatement.getStatementContent(this);
     }
 
-    public Vector getRentals() {
+    Vector<Rental> getRentals() {
         return rentals;
-    }
-
-    public void setRentals(Vector rentals) {
-        this.rentals = rentals;
     }
 }
