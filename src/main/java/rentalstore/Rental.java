@@ -28,10 +28,8 @@ public class Rental {
                 thisAmount += newRelease.getAmount(thisAmount,each);
                 break;
             case Movie.CHILDRENS:
-                thisAmount+=1.5;
-                if(each.getDayRented() > 3){
-                    thisAmount += (each.getDayRented() -3)*1.5;
-                }
+                Childrens childrens = new Childrens();
+                thisAmount += childrens.getAmount(thisAmount,each);
                 break;
         }
         return thisAmount;
