@@ -11,11 +11,11 @@ public class Rental {
         this.movieType = movieType;
     }
 
-    public Movie getMovie() {
+    Movie getMovie() {
         return movie;
     }
 
-    public int getDayRented() {
+    int getDayRented() {
         return dayRented;
     }
 
@@ -23,7 +23,7 @@ public class Rental {
         thisAmount += movieType.getAmount(thisAmount,each);
         return thisAmount;
     }
-    public MovieType getMovieType() {
+    MovieType getMovieType() {
         return movieType;
     }
 }

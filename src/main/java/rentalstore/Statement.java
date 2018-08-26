@@ -2,13 +2,13 @@ package rentalstore;
 
 import java.util.Enumeration;
 
-public abstract class Statement {
+abstract class Statement {
 
-    public String getStatementContent(Customer customer){
+    String getStatementContent(Customer customer){
         double totalAmount = 0;
         int frequentRenterPoints = 0;
         Enumeration rentals = customer.getRentals().elements();
-        String result = headerString(customer.getName());
+        StringBuilder result = new StringBuilder(headerString(customer.getName()));
         while(rentals.hasMoreElements()){
             double thisAmount =0;
             Rental each = (Rental) rentals.nextElement();
@@ -19,13 +19,13 @@ public abstract class Statement {
             frequentRenterPoints = getFrequentRenterPoints(frequentRenterPoints, each);
 
             //show figures for this rental
-            result += eachRentalString(thisAmount,each);
+            result.append(eachRentalString(thisAmount, each));
             totalAmount += thisAmount;
         }
 
         //add footer lines
-        result += footerString(totalAmount, frequentRenterPoints);
-        return result;
+        result.append(footerString(totalAmount, frequentRenterPoints));
+        return result.toString();
     }
 
     private int getFrequentRenterPoints(int frequentRenterPoints, Rental each) {
