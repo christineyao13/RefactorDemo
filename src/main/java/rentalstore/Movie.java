@@ -1,20 +1,14 @@
 package rentalstore;
 
-public class Movie {
+class Movie {
 
     private String title;
-    private int priceCode;
 
-    public Movie(String title, int priceCode) {
+    Movie(String title, int priceCode) {
         this.title = title;
-        this.priceCode = priceCode;
     }
 
-    int getPriceCode() {
-        return priceCode;
-    }
-
-    public String getTitle() {
+    String getTitle() {
         return title;
     }
 }
