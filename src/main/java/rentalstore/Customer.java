@@ -5,9 +5,6 @@ import java.util.Vector;
 
 public class Customer {
     private String name;
-
-
-
     private Vector rentals = new Vector();
 
     public Customer(String name) {
@@ -24,12 +21,12 @@ public class Customer {
 
     public String statement(){
         TxtStatement txtStatement = new TxtStatement();
-        return txtStatement.getTxtStatement(this);
+        return txtStatement.getStatementContent(this);
     }
 
     public String HtmlStatement(){
         HtmlStatement htmlStatement = new HtmlStatement();
-        return htmlStatement.getHtmlStatement(this);
+        return htmlStatement.getStatementContent(this);
     }
 
 
