@@ -29,7 +29,6 @@ public class Customer {
         return htmlStatement.getStatementContent(this);
     }
 
-
     public Vector getRentals() {
         return rentals;
     }
