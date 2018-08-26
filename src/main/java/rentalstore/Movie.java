@@ -4,7 +4,7 @@ class Movie {
 
     private String title;
 
-    Movie(String title, int priceCode) {
+    Movie(String title) {
         this.title = title;
     }
 
