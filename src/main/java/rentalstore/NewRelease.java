@@ -7,7 +7,7 @@ public class NewRelease extends MovieType{
     public int getFrequentRenterPoints(int frequentRenterPoints, Rental each) {
         frequentRenterPoints ++;
         //add bonus for a two day new release rental
-        if((each.getMovie().getPriceCode() == Movie.NEW_RELEASE) && each.getDayRented() > 1){
+        if( each.getDayRented() > 1){
             frequentRenterPoints ++;
         }
         return frequentRenterPoints;
