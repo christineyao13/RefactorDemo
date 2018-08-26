@@ -3,10 +3,12 @@ package rentalstore;
 public class Rental {
     private Movie movie;
     private int dayRented;
+    private MovieType movieType;
 
-    public Rental(Movie movie, int dayRented) {
+    public Rental(Movie movie, int dayRented,MovieType movieType) {
         this.movie = movie;
         this.dayRented = dayRented;
+        this.movieType = movieType;
     }
 
     public Movie getMovie() {
@@ -18,20 +20,7 @@ public class Rental {
     }
 
     double getAmount(double thisAmount, Rental each) {
-        switch (each.getMovie().getPriceCode()){
-            case Movie.REGULAR:
-                Regular regular = new Regular();
-                thisAmount += regular.getAmount(thisAmount,each);
-                break;
-            case Movie.NEW_RELEASE:
-                NewRelease newRelease = new NewRelease();
-                thisAmount += newRelease.getAmount(thisAmount,each);
-                break;
-            case Movie.CHILDRENS:
-                Childrens childrens = new Childrens();
-                thisAmount += childrens.getAmount(thisAmount,each);
-                break;
-        }
+        thisAmount += movieType.getAmount(thisAmount,each);
         return thisAmount;
     }
 }
