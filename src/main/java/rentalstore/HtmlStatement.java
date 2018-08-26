@@ -1,8 +1,6 @@
 package rentalstore;
 
-import java.util.Enumeration;
-
-public class HtmlStatement extends Statement {
+class HtmlStatement extends Statement {
 
 
     String footerString(double totalAmount, int frequentRenterPoints) {
