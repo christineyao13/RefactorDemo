@@ -1,8 +1,6 @@
 package rentalstore;
 
-import java.util.Enumeration;
-
-public class TxtStatement extends Statement {
+class TxtStatement extends Statement {
 
 
     String footerString(double totalAmount, int frequentRenterPoints) {
