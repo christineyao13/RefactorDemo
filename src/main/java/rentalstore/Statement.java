@@ -16,11 +16,7 @@ public abstract class Statement {
             thisAmount = each.getAmount(thisAmount, each);
 
             //add frequent renter points
-            frequentRenterPoints ++;
-            //add bonus for a two day new release rental
-            if((each.getMovie().getPriceCode() == Movie.NEW_RELEASE) && each.getDayRented() > 1){
-                frequentRenterPoints ++;
-            }
+            frequentRenterPoints = getFrequentRenterPoints(frequentRenterPoints, each);
 
             //show figures for this rental
             result += eachRentalString(thisAmount,each);
@@ -30,10 +26,11 @@ public abstract class Statement {
         //add footer lines
         result += footerString(totalAmount, frequentRenterPoints);
         return result;
-
     }
 
-
+    private int getFrequentRenterPoints(int frequentRenterPoints, Rental each) {
+       return each.getMovieType().getFrequentRenterPoints(frequentRenterPoints,each);
+    }
 
     abstract String footerString(double totalAmount, int frequentRenterPoints);
 

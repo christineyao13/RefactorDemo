@@ -23,4 +23,7 @@ public class Rental {
         thisAmount += movieType.getAmount(thisAmount,each);
         return thisAmount;
     }
+    public MovieType getMovieType() {
+        return movieType;
+    }
 }
