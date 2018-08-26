@@ -23,7 +23,7 @@ public class Customer {
         double totalAmount = 0;
         int frequentRenterPoints = 0;
         Enumeration rentals = this.rentals.elements();
-        String result = "Rental Record for " + getName() + "\n";
+        String result = headerString();
         while(rentals.hasMoreElements()){
             double thisAmount =0;
             Rental each = (Rental) rentals.nextElement();
@@ -53,21 +53,33 @@ public class Customer {
             }
 
             //show figures for this rental
-            result += "\t" + each.getMovie().getTitle() + "\t" + String.valueOf(thisAmount) + "\n";
+            result += eachRentalString(thisAmount, each);
             totalAmount += thisAmount;
         }
 
         //add footer lines
-        result += "Amount owed is " + String.valueOf(totalAmount) + "\n";
-        result += "You earned " + String.valueOf(frequentRenterPoints) + " frequent renter points";
+        result += footerString(totalAmount, frequentRenterPoints);
         return result;
+    }
+
+    private String footerString(double totalAmount, int frequentRenterPoints) {
+        return "Amount owed is " + String.valueOf(totalAmount) + "\n"+
+                "You earned " + String.valueOf(frequentRenterPoints) + " frequent renter points";
+    }
+
+    private String eachRentalString(double thisAmount, Rental each) {
+        return "\t" + each.getMovie().getTitle() + "\t" + String.valueOf(thisAmount) + "\n";
+    }
+
+    private String headerString() {
+        return "Rental Record for " + getName() + "\n";
     }
 
     public String HtmlStatement(){
         double totalAmount = 0;
         int frequentRenterPoints = 0;
         Enumeration rentals = this.rentals.elements();
-        String result = "<H1>Rentals for <EM>" + getName() + "</EM></H1><P>\n";
+        String result = htmlheaderString();
         while(rentals.hasMoreElements()){
             double thisAmount =0;
             Rental each = (Rental) rentals.nextElement();
@@ -97,13 +109,25 @@ public class Customer {
             }
 
             //show figures for this rental
-            result +=  each.getMovie().getTitle() + ": " + String.valueOf(thisAmount) + "<BR>\n";
+            result += htmlEachRentalString(thisAmount, each);
             totalAmount += thisAmount;
         }
 
         //add footer lines
-        result += "<P>You owe<EM>" + String.valueOf(totalAmount) + "</EM><P>\n";
-        result += "On this rental you earned <EM>" + String.valueOf(frequentRenterPoints) + "</EM> frequent renter points<P>";
+        result += htmlFooterString(totalAmount, frequentRenterPoints);
         return result;
+    }
+
+    private String htmlFooterString(double totalAmount, int frequentRenterPoints) {
+        return "<P>You owe<EM>" + String.valueOf(totalAmount) + "</EM><P>\n"+
+                "On this rental you earned <EM>" + String.valueOf(frequentRenterPoints) + "</EM> frequent renter points<P>";
+    }
+
+    private String htmlEachRentalString(double thisAmount, Rental each) {
+        return each.getMovie().getTitle() + ": " + String.valueOf(thisAmount) + "<BR>\n";
+    }
+
+    private String htmlheaderString() {
+        return "<H1>Rentals for <EM>" + getName() + "</EM></H1><P>\n";
     }
 }
